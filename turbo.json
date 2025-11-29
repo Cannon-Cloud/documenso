@@ -37,6 +37,7 @@
   },
   "globalDependencies": ["**/.env.*local"],
   "globalEnv": [
+    "DEV",
     "APP_VERSION",
     "PORT",
     "NEXT_PRIVATE_ENCRYPTION_KEY",

@@ -4,10 +4,11 @@ import type { MacroMessageDescriptor } from '@lingui/core/macro';
 
 import type { I18nLocaleData, SupportedLanguageCodes } from '../constants/i18n';
 import { APP_I18N_OPTIONS } from '../constants/i18n';
-import { env } from './env';
 
 export async function getTranslations(locale: string) {
-  const extension = env('NODE_ENV') === 'development' ? 'po' : 'mjs';
+  // Use import.meta.env.DEV which is statically replaced by Vite at build time
+  // This ensures the correct file extension is used in both dev and production
+  const extension = import.meta.env.DEV ? 'po' : 'mjs';
 
   const { messages } = await import(`../translations/${locale}/web.${extension}`);
 
